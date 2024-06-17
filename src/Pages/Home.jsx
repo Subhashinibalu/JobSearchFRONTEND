@@ -1,9 +1,13 @@
 import React from 'react';
+import FooterComp from '../Components/FooterComp';
+import Header from '../Components/Header';
 
 const Home = () => {
     return (
         <>
-           <h1>Home</h1> 
+        <Header/>
+           <h1>Home</h1>
+           <FooterComp/> 
         </>
     );
 };

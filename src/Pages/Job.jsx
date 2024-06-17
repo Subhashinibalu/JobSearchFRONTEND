@@ -1,9 +1,13 @@
 import React from 'react';
+import Header from '../Components/Header';
+import FooterComp from '../Components/FooterComp';
 
 const Job = () => {
     return (
         <>
+        <Header/>
           <h1>Job</h1>  
+          <FooterComp/>
         </>
     );
 };

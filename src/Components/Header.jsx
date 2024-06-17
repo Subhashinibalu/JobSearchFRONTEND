@@ -1,16 +1,16 @@
 import { Avatar, Button, Dropdown, Navbar, TextInput } from 'flowbite-react';
 import React from 'react';
 import { AiOutlineSearch } from 'react-icons/ai';
-import { Link, NavLink, useLocation } from 'react-router-dom';
+import { Link,  useLocation } from 'react-router-dom';
 
 const Header = () => {
-    const path =useLocation().pathname;
+    const path =useLocation().pathname;// the path is stored in the variable path
     return (
         <>
-         <Navbar fluid rounded className='p-4'>
+         <Navbar fluid rounded className='p-5 m-2 mt-2'>
 
             {/*  logo and name display */}
-         <Navbar.Brand className="text-2xl md:ms-6 lg:ms-14">
+         <Navbar.Brand className=" text-2xl md:ms-2 lg:ms-14  lg:text-4xl">
         <img src="https://cdn-icons-png.freepik.com/256/10903/10903438.png?ga=GA1.1.937687561.1710832007&semt=ais_hybrid" className="mr-3 h-6 sm:h-9" alt="Flowbite React Logo" />
         <span className="self-center whitespace-nowrap   font-semibold text-blue-600">JobSearch</span>
       </Navbar.Brand>
@@ -20,29 +20,17 @@ const Header = () => {
      </Button>
 
       {/* UserIcon */}
-      <div className="flex md:order-2 md:me-2 lg:me-14">
-        <Dropdown
-          arrowIcon={false}
-          inline
-          label={
+      <div className="flex md:order-2  lg:me-14">
+        
             <Avatar alt="User settings" img="" rounded />
-          }
-        >
-          <Dropdown.Header>
-            <span className="block text-sm">Bonnie Green</span>
-            <span className="block truncate text-sm font-medium">name@flowbite.com</span>
-          </Dropdown.Header>
-          <Dropdown.Item>Dashboard</Dropdown.Item>
-          <Dropdown.Item>Settings</Dropdown.Item>
-          <Dropdown.Item>Earnings</Dropdown.Item>
-          <Dropdown.Divider />
-          <Dropdown.Item>Sign out</Dropdown.Item>
-        </Dropdown>
+
+        
+       
         <Navbar.Toggle />
       </div>
       {/* pages */}
-      <Navbar.Collapse>
-        <Navbar.Link active={path === '/'}  as={'div'}><Link to='/'>Home</Link></Navbar.Link>
+      <Navbar.Collapse >
+        <Navbar.Link active={path === '/home'}  as={'div'}><Link to='/home' >Home</Link></Navbar.Link>
         <Navbar.Link active={path === '/job'} as={'div'}><Link to='/job'>Job Recommendation</Link></Navbar.Link>
         <Navbar.Link active={path === '/track'} as={'div'}><Link to='/track'>My Applications</Link></Navbar.Link>
       
@@ -50,7 +38,7 @@ const Header = () => {
        
       </Navbar.Collapse>
        {/* searchbar */}
-       <form className='lg:min-w-80 md:min-w-3xl sm:min-w-30 '>
+       <form className='lg:min-w-80 md:min-w-2xl sm:min-w-30 '>
         <TextInput type="text" placeholder='Job Search...' rightIcon={AiOutlineSearch} className='hidden md:inline' />
       </form> 
     

@@ -6,24 +6,29 @@ import Job from './Pages/Job';
 import Search from './Pages/Search';
 import Login from './Pages/Login';
 import Register from './Pages/Register';
-import Header from './Components/Header';
-import Footer from './Components/Footer';
+
+
 import TrackApplication from './Pages/TrackApplication';
+import { ToastContainer } from 'react-toastify';
+
 
 const App = () => {
   return (
     <>
     <BrowserRouter>
-    <Header/>
+    
+    <div>
+      <ToastContainer/>
+    </div>
     <Routes>
-      <Route path='/' element={<Home/>} />
+      <Route path='/home' element={<Home/>} />
       <Route path='/job' element={<Job/>}/>
       <Route path='/track' element={<TrackApplication/>}/>
       <Route path='/search' element={<Search/>} />
       <Route path='/login' element={<Login/>}/>
-      <Route path='/register' element={<Register/>} />
+      <Route path='/' element={<Register/>} />
     </Routes>
-    <Footer/>
+ 
     </BrowserRouter>
     </>
   );

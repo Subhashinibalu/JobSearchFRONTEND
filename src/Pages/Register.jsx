@@ -1,8 +1,45 @@
-import { Button, Label, TextInput } from 'flowbite-react';
-import React from 'react';
-import { Link } from 'react-router-dom';
+import axios from 'axios';
+import {  Button, Label, TextInput } from 'flowbite-react';
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Register = () => {
+  
+const navigate = useNavigate()
+  const[registerData, setregisterData] = useState();
+
+  //the values changed in the input field will be updated to the register data 
+  const handleChange = (e) => {
+    setregisterData({...registerData,[e.target.id]: e.target.value.trim()})
+    //console.log(registerData);
+
+  }
+
+
+  //storing the userdata in the database
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  if(!registerData.username || !registerData.password || !registerData.email){
+    return alert("Please fill all the fields");
+  }
+  await axios.post(`http://localhost:5000/api/auth/register`,registerData)
+    .then((response) =>{toast.success( response.data.message)
+      setTimeout(() =>{
+      navigate('/login')
+      },2000)})
+.catch ((error) => {
+ // console.log(error);
+  return toast.error(error.message)
+
+});
+
+
+  
+ 
+}
+
     return (
         <>
          <div className="min-h-screen mt-20">
@@ -19,13 +56,14 @@ const Register = () => {
           </p>
         </div>
         <div className="flex-1">
-          <form className="flex flex-col gap-4" >
+          <form className="flex flex-col gap-4" onSubmit={handleSubmit} >
             <div>
               <Label value="Username" />
               <TextInput
                 type="text"
                 placeholder="Enter your User Name"
                 id="username"
+                onChange={handleChange}
                 
               />
             </div>
@@ -35,6 +73,7 @@ const Register = () => {
                 type="email"
                 placeholder="name@company.com"
                 id="email"
+                onChange={handleChange}
                 
               />
             </div>
@@ -44,6 +83,7 @@ const Register = () => {
                 type="password"
                 placeholder="Enter Your Password"
                 id="password"
+                onChange={handleChange}
                 
               />
             </div>
