@@ -1,44 +1,50 @@
 import axios from 'axios';
 import {  Button, Label, TextInput } from 'flowbite-react';
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+import { useFormik } from "formik";
+import * as Yup from "yup";
+import { mycontext } from '../App';
 const Register = () => {
   
 const navigate = useNavigate()
-  const[registerData, setregisterData] = useState();
+//state management
+const [user,setUser]=useContext(mycontext)
 
-  //the values changed in the input field will be updated to the register data 
-  const handleChange = (e) => {
-    setregisterData({...registerData,[e.target.id]: e.target.value.trim()})
-    //console.log(registerData);
-
-  }
-
-
-  //storing the userdata in the database
-const handleSubmit = async (e) => {
-  e.preventDefault();
-  if(!registerData.username || !registerData.password || !registerData.email){
-    return alert("Please fill all the fields");
-  }
-  await axios.post(`http://localhost:5000/api/auth/register`,registerData)
-    .then((response) =>{toast.success( response.data.message)
+ // formik declaration
+ const formik = useFormik({
+  initialValues: {
+   username:"",
+   email:"",
+   password:""
+  },
+  validationSchema: Yup.object({
+    username: Yup.string().required("Username is required"),
+    email: Yup.string().required("Email is required"),
+    password: Yup.string().required("Password is required"),
+   
+  }),
+  onSubmit: async (values) => {
+try {
+  const response=await axios.post(`http://localhost:5000/api/auth/register`,values)
+  if (response.status==200) {
+    toast.success( response.data.message)
+    setUser(response.data.result)
+    
+    console.log(user)
       setTimeout(() =>{
       navigate('/login')
-      },2000)})
-.catch ((error) => {
- // console.log(error);
-  return toast.error(error.message)
-
+      },2000)}
+} catch (error) {
+  console.log(error);
+  return toast.error(error.response.data.message)
+}
+  },
 });
 
 
-  
- 
-}
 
     return (
         <>
@@ -56,36 +62,45 @@ const handleSubmit = async (e) => {
           </p>
         </div>
         <div className="flex-1">
-          <form className="flex flex-col gap-4" onSubmit={handleSubmit} >
+          <form className="flex flex-col gap-4" onSubmit={formik.handleSubmit} >
             <div>
-              <Label value="Username" />
+              <Label value="Username" className='form-label'/>
               <TextInput
                 type="text"
+                className='form-control'
                 placeholder="Enter your User Name"
-                id="username"
-                onChange={handleChange}
+                name="username"
+                value={formik.values.username}
+                onChange={formik.handleChange}
                 
               />
+              <div className="text-red-600">{formik.errors.username}</div>
             </div>
             <div>
-              <Label value="Email" />
+              <Label value="Email"  className='form-label'/>
               <TextInput
                 type="email"
-                placeholder="name@company.com"
-                id="email"
-                onChange={handleChange}
+                className='form-control'
+                placeholder="name@emailservice.com"
+                name="email"
+                value={formik.values.email}
+                onChange={formik.handleChange}
                 
               />
+              <div className="text-red-600">{formik.errors.email}</div>
             </div>
             <div>
-              <Label value="Password" />
+              <Label value="Password" className='form-label' />
               <TextInput
                 type="password"
+                className='form-control'
                 placeholder="Enter Your Password"
-                id="password"
-                onChange={handleChange}
+                name="password"
+                value={formik.values.password}
+                onChange={formik.handleChange}
                 
               />
+              <div className="text-red-600">{formik.errors.password}</div>
             </div>
             <Button gradientDuoTone="purpleToBlue" type="submit">
             Register

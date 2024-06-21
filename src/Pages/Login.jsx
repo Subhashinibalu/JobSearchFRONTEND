@@ -1,50 +1,51 @@
+//import
 import axios from 'axios';
 import {  Button, Label, TextInput } from 'flowbite-react';
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Header from '../Components/Header';
-import FooterComp from '../Components/FooterComp';
+
+import { useFormik } from "formik";
+import * as Yup from "yup";
+import { mycontext } from '../App';
 
 
+// logic for user login form
 const Login = () => {
-
-    const navigate = useNavigate()
-  const[loginData, setloginData] = useState();
-
-  //the values changed in the input field will be updated to the register data 
-  const handleChange = (e) => {
-    setloginData({...loginData,[e.target.id]: e.target.value})
-    //console.log(loginData);
-
-  }
-
-
-  //storing the userdata in the database
-const handleSubmit = async (e) => {
-  e.preventDefault();
-  if(!loginData.password || !loginData.email){
-    return alert("Please fill all the fields");
-  }
-  await axios.post(`http://localhost:5000/api/auth/login`,loginData)
-    .then((response) =>{toast.success( response.data.message)
-      setTimeout(() =>{
-      navigate('/home')
-      },2000)})
-.catch ((error) => {
- // console.log(error);
-  return toast.error(error.message)
-
-});
-
-
-  
- 
+//to navigate to pages
+   const navigate = useNavigate()
+  //statemanagement
+const [token,setToken]=useContext(mycontext)
+  // formik declaration
+ const formik = useFormik({
+  initialValues: {
+   email:"",
+   password:""
+  },
+  validationSchema: Yup.object({
+    email: Yup.string().required("Email is required"),
+    password: Yup.string().required("Password is required"),
+   
+  }),
+  onSubmit: async (values) => {
+try {
+  const response=await axios.post(`http://localhost:5000/api/auth/login`,values)
+  if (response.status==200) {
+    toast.success( response.data.message)
+    console.log(response)
+    setToken(response.data.token)
+    navigate('/home')
+         }
+} catch (error) {
+  console.log(error);
+  return toast.error(error.response.data.message)
 }
+  },
+});
     return (
         <>
-        <Header/>
+       
         <div className="min-h-screen mt-20">
       <div className="flex p-3 max-w-3xl mx-auto flex-col md:flex-row md:items-center gap-5">
         <div className="flex-1">
@@ -53,27 +54,33 @@ const handleSubmit = async (e) => {
 
         <div className="flex-1">
             <p className='font-bold text-xl mb-5 text-blue-700 text-center'>USER LOGIN</p>
-          <form className="flex flex-col gap-5" onSubmit={handleSubmit} >
+          <form className="flex flex-col gap-5" onSubmit={formik.handleSubmit} >
            
-            <div>
-              <Label value="Email" />
+          <div>
+              <Label value="Email"  className='form-label'/>
               <TextInput
                 type="email"
-                placeholder="name@company.com"
-                id="email"
-                onChange={handleChange}
+                className='form-control'
+                placeholder="name@emailservice.com"
+                name="email"
+                value={formik.values.email}
+                onChange={formik.handleChange}
                 
               />
+              <div className="text-red-600">{formik.errors.email}</div>
             </div>
             <div>
-              <Label value="Password" />
+              <Label value="Password" className='form-label' />
               <TextInput
                 type="password"
+                className='form-control'
                 placeholder="Enter Your Password"
-                id="password"
-                onChange={handleChange}
+                name="password"
+                value={formik.values.password}
+                onChange={formik.handleChange}
                 
               />
+              <div className="text-red-600">{formik.errors.password}</div>
             </div>
             <Button gradientDuoTone="purpleToBlue" type="submit">
             Login
@@ -85,7 +92,7 @@ const handleSubmit = async (e) => {
             <Link to="/" className="text-blue-700 ">
             Click here 
             </Link></div>
-            <div> <Link to="/" className="text-red-600">
+            <div> <Link to="/forgetpassword" className="text-red-600">
             Forget password?
             </Link></div>
             
@@ -94,10 +101,9 @@ const handleSubmit = async (e) => {
         </div>
       </div>
     </div>
-        <FooterComp/>
+        
         </>
     );
 };
 
 export default Login;
-// if a user has an account he/she can login here
