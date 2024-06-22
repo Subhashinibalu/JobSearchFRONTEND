@@ -20,8 +20,8 @@ const Header = () => {
 
  //for sign out
  const handleSignout=()=>{
-   localStorage.removeItem('Token')
-   setUser('')
+   localStorage.removeItem('Token')//token is removed from local storage
+   setUser('')//user data is set empty
 toast.success("Logged out successfully")
   navigate('/login')
  }
@@ -30,12 +30,14 @@ toast.success("Logged out successfully")
  const handleDelete = async () => {
   setShowModal(false);
   try {
-    const response= await axios.delete(`http://localhost:5000/api/user/delete/${user._id}`)
+    const response= await axios.delete(`http://localhost:5000/api/user/delete/${user._id}`)//user id is send, so we can delete using id
+   
+   //on successful deletion of 
     if (response.status==200) {
       toast.success( response.data.message)
-      setUser('')
-      localStorage.removeItem('Token')
-      navigate('/')
+      setUser('')//user data will be emptied
+      localStorage.removeItem('Token')//token in local storage will be removed
+      navigate('/')//page will be navigated to registration page
      
            }
     
@@ -67,6 +69,7 @@ toast.success("Logged out successfully")
 
       {/* UserIcon */}
       <div className="flex md:order-2  lg:me-14">
+        {/* if user exist user avatar with dropdown option will be displayed or else normal avatar only be displayed */}
         {user? <><Dropdown
           arrowIcon={false}
           inline
@@ -82,8 +85,10 @@ toast.success("Logged out successfully")
           <Dropdown.Item><Link to='/profile'>My Profile</Link></Dropdown.Item>
           <Dropdown.Item><Link to='/track'>Track Application</Link></Dropdown.Item>
           <Dropdown.Divider />
+         {/* to logout from the account */}
           <Dropdown.Item onClick={handleSignout} className='font-serif '>Log out</Dropdown.Item>
           <Dropdown.Divider />
+          {/* to delete the account */}
           <Dropdown.Item className='text-red-600 font-serif font-semibold block text-center' 
           onClick={()=>setShowModal(true)}
           >Delete Account</Dropdown.Item>
@@ -110,7 +115,7 @@ toast.success("Logged out successfully")
       </form> 
     
             </Navbar>
-
+{/* for confirmation when delete account is created */}
              <Modal
         show={showModal}
         onClose={() => setShowModal(false)}
@@ -127,6 +132,7 @@ toast.success("Logged out successfully")
               Are you sure you want to delete this Account?
             </h3>
             <div className="flex justify-center gap-4">
+              {/* delete account function will begin on clicking this button */}
               <Button color="failure" onClick={handleDelete}>
               {"Yes, I'm sure"}
               </Button>

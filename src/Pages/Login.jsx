@@ -34,9 +34,9 @@ try {
   const response=await axios.post(`http://localhost:5000/api/auth/login`,values)
   if (response.status==200) {
     toast.success( response.data.message)
-    localStorage.setItem('Token',response.data.token)
+    localStorage.setItem('Token',response.data.token)//token from the response is stored in local storage
   
-    setUser(response.data.rest)
+    setUser(response.data.rest)//user details from the response is set to user
     navigate('/home')
    
          }
