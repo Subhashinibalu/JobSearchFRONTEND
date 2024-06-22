@@ -3,10 +3,11 @@ import { mycontext } from '../App';
 import { Navigate, Outlet } from 'react-router-dom';
 
 const PrivateRoute = () => {
-    const [token,setToken]=useContext(mycontext)
+
+   const[user,setUser]=useContext(mycontext)
     return (
         <>
-        {token ? <Outlet/> : <Navigate to='/login'/> }
+        {user ? <Outlet/> : <Navigate to='/login'/> }
         </>
     )
 };

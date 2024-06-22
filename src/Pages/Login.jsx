@@ -16,7 +16,8 @@ const Login = () => {
 //to navigate to pages
    const navigate = useNavigate()
   //statemanagement
-const [token,setToken]=useContext(mycontext)
+
+const[user,setUser] = useContext(mycontext);
   // formik declaration
  const formik = useFormik({
   initialValues: {
@@ -33,9 +34,11 @@ try {
   const response=await axios.post(`http://localhost:5000/api/auth/login`,values)
   if (response.status==200) {
     toast.success( response.data.message)
-    console.log(response)
-    setToken(response.data.token)
+    localStorage.setItem('Token',response.data.token)
+  
+    setUser(response.data.rest)
     navigate('/home')
+   
          }
 } catch (error) {
   console.log(error);
@@ -43,6 +46,7 @@ try {
 }
   },
 });
+
     return (
         <>
        

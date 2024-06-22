@@ -33,7 +33,7 @@ try {
     toast.success( response.data.message)
     setUser(response.data.result)
     
-    console.log(user)
+    
       setTimeout(() =>{
       navigate('/login')
       },2000)}

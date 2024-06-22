@@ -13,6 +13,7 @@ import ResetPassword from './Pages/ResetPassword';
 import Header from './Components/Header';
 import FooterComp from './Components/FooterComp';
 import PrivateRoute from './Components/PrivateRoute';
+import UserProfile from './Pages/UserProfile';
 
 
 export const mycontext = createContext('')
@@ -36,6 +37,7 @@ const App = () => {
       <Route path='/job' element={<Job/>}/>
       <Route path='/track' element={<TrackApplication/>}/>
       <Route path='/search' element={<Search/>} />
+      <Route path='/profile' element={<UserProfile/>}/>
       </Route>
     
       <Route path='/login' element={<Login />}/>
