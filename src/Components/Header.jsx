@@ -10,7 +10,7 @@ import { HiOutlineExclamationCircle } from 'react-icons/hi';
 
 
 const Header = () => {
-  
+  const token = localStorage.getItem('Token');
   //to get user details if user exist
  const[user,setUser]=useContext(mycontext)
  const [showModal, setShowModal] = useState(false);
@@ -70,7 +70,7 @@ toast.success("Logged out successfully")
       {/* UserIcon */}
       <div className="flex md:order-2  lg:me-14">
         {/* if user exist user avatar with dropdown option will be displayed or else normal avatar only be displayed */}
-        {user? <><Dropdown
+        {token && user ? <><Dropdown
           arrowIcon={false}
           inline
           label={

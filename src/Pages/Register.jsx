@@ -31,7 +31,7 @@ try {
   const response=await axios.post(`http://localhost:5000/api/auth/register`,values)
   if (response.status==200) {
     toast.success( response.data.message)
-    setUser(response.data.result)
+    
     
     
       setTimeout(() =>{
