@@ -14,6 +14,8 @@ import Header from './Components/Header';
 import FooterComp from './Components/FooterComp';
 import PrivateRoute from './Components/PrivateRoute';
 import UserProfile from './Pages/UserProfile';
+import OnlyAdminPrivateRoute from './Components/OnlyAdminPrivateRoute';
+import PostJobs from './Pages/PostJobs';
 
 
 export const mycontext = createContext('')
@@ -39,7 +41,9 @@ const App = () => {
       <Route path='/search' element={<Search/>} />
       <Route path='/profile' element={<UserProfile/>}/>
       </Route>
-    
+    <Route element={<OnlyAdminPrivateRoute/>}>
+    <Route path='/post-jobs' element={<PostJobs/>} />
+    </Route>
       <Route path='/login' element={<Login />}/>
       <Route path='/forgetpassword' element={<ForgetPassword/>}/>
       <Route path='/resetpassword/:id/:token' element={<ResetPassword />}/>

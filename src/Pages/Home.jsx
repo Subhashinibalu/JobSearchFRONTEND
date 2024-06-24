@@ -5,6 +5,8 @@ import * as Yup from "yup";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { mycontext } from "../App";
+import { Link } from "react-router-dom";
+
 Image
 const Home = () => {
   const [user, setUser] = useContext(mycontext);
@@ -79,9 +81,7 @@ const C = user.skills.filter((ele)=>ele=="C++").length
         <form onSubmit={formik.handleSubmit}>
           <div className="space-y-12">
           <div className="border-b border-gray-900/10 pb-12 ">
-        
-         
-      <Card className="max-w-8xl mx-auto">
+        {user.isAdmin ? (<Button gradientDuoTone="purpleToBlue"><Link to='/post-jobs' >Post New Jobs +</Link></Button>):( <Card className="max-w-8xl mx-auto">
       <h5 className="text-2xl text-center font-bold tracking-tight text-blue-600">
         USER DETAILS
       </h5>
@@ -102,7 +102,9 @@ const C = user.skills.filter((ele)=>ele=="C++").length
 
      
       <span className="text-sm text-gray-500 block text-center dark:text-gray-400">user {user.username} can update her/his details here</span>
-          </Card>
+          </Card>)}
+         
+     
           
 
           </div>
@@ -449,7 +451,7 @@ const C = user.skills.filter((ele)=>ele=="C++").length
           </div>
           <div className="mt-6 flex items-center justify-end gap-x-6">
    
-    <Button type="submit" className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Save</Button>
+    <Button type="submit" gradientDuoTone="purpleToBlue" className="rounded-md px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Save</Button>
   </div>
         </form>
       </div>

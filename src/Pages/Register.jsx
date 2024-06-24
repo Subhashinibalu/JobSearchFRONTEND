@@ -1,17 +1,16 @@
 import axios from 'axios';
 import {  Button, Label, TextInput } from 'flowbite-react';
-import React, { useContext } from 'react';
+import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { mycontext } from '../App';
+
 const Register = () => {
   
 const navigate = useNavigate()
-//state management
-const [user,setUser]=useContext(mycontext)
+
 
  // formik declaration
  const formik = useFormik({
