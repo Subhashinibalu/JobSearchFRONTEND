@@ -1,6 +1,6 @@
 import { Button, Card, Label, TextInput, Textarea } from "flowbite-react";
 import React, { useContext } from "react";
-import { FieldArray, useFormik } from "formik";
+import { useFormik } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 import { toast } from "react-toastify";
@@ -13,15 +13,15 @@ const Home = () => {
   const formik = useFormik({
     initialValues: {
       about:"",
-     
+     skills:[],
       ugdegree:"",
       ugcourse:"",
       ugpercentage:"",
       pgdegree:"",
       pgcourse:"",
       pgpercentage:"",
-      firstName: "",
-      lastName: "",
+      firstname: "",
+      lastname: "",
       streetaddress: "",
       city: "",
       region: "",
@@ -29,20 +29,19 @@ const Home = () => {
     },
     validationSchema: Yup.object({
 
-      about: Yup.string(),
-      
-      ugdegree: Yup.string(),
-      ugcourse: Yup.string(),
-      ugpercentage: Yup.string(),
-      pgdegree: Yup.string(),
-      pgcourse: Yup.string(),
-      pgpercentage: Yup.string(),
-      firstName: Yup.string(),
-      lastName: Yup.string(),
-      streetaddress: Yup.string(),
-      city: Yup.string(),
-      region: Yup.string(),
-      postalcode: Yup.string(),
+      about: Yup.string().required("Need to be specified"),
+      ugdegree: Yup.string().required("Need to be specified "),
+      ugcourse: Yup.string().required("Need to be specified"),
+      ugpercentage: Yup.string().required("Need to be specified"),
+      pgdegree: Yup.string().required("Need to be specified"),
+      pgcourse: Yup.string().required("Need to be specified"),
+      pgpercentage: Yup.string().required("Need to be specified"),
+      firstname: Yup.string().required("Need to be specified in Capital letters"),
+      lastname: Yup.string().required("Need to be specified in Capital letters"),
+      streetaddress: Yup.string().required("Need to be specified"),
+      city: Yup.string().required("Need to be specified"),
+      region: Yup.string().required("Need to be specified"),
+      postalcode: Yup.string().required("Need to be specified"),
     }),
     onSubmit: async (values) => {
       try {
@@ -84,18 +83,23 @@ const Home = () => {
           
 
           </div>
+          
+
+
+
           <div className="border-b border-gray-900/10 pb-12">
           <div className="col-span-full">
             <Label value="About" className="form-label block text-sm font-medium leading-6 text-gray-900"/>
             <div className="mt-2">
             <Textarea id="about" name="about" rows="3" defaultValue={user.about||""} onChange={formik.handleChange} className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"></Textarea>
             <p className="mt-3 text-sm leading-6 text-gray-600">Write a few sentences about yourself.</p>
+            <div className="text-red-600">{formik.errors.about}</div>
           </div>
           
           </div>
           
           </div>
-          
+          {/* Educational qualifications */}
           <div className="border-b border-gray-900/10 pb-12">
               <h2 className="text-base font-semibold leading-7 text-gray-900">
                 Qualifications
@@ -118,6 +122,7 @@ const Home = () => {
                       onChange={formik.handleChange}
                       className="form-control block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     />{" "}
+                    <div className="text-red-600">{formik.errors.ugdegree}</div>
                   </div>
                 </div>
                 <div className="sm:col-span-2">
@@ -134,6 +139,7 @@ const Home = () => {
                       onChange={formik.handleChange}
                       className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     />{" "}
+                    <div className="text-red-600">{formik.errors.ugcourse}</div>
                   </div>
                 </div>
                 <div className="sm:col-span-2">
@@ -150,6 +156,7 @@ const Home = () => {
                       onChange={formik.handleChange}
                       className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     />{" "}
+                    <div className="text-red-600">{formik.errors.ugpercentage}</div>
                   </div>
                 </div>
                 <div className="sm:col-span-2 sm:col-start-1">
@@ -166,6 +173,7 @@ const Home = () => {
                       onChange={formik.handleChange}
                       className="form-control block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     />{" "}
+                    <div className="text-red-600">{formik.errors.pgdegree}</div>
                   </div>
                 </div>
                 <div className="sm:col-span-2">
@@ -182,6 +190,7 @@ const Home = () => {
                       onChange={formik.handleChange}
                       className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     />{" "}
+                    <div className="text-red-600">{formik.errors.pgcourse}</div>
                   </div>
                 </div>
                 <div className="sm:col-span-2">
@@ -198,13 +207,98 @@ const Home = () => {
                       onChange={formik.handleChange}
                       className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     />{" "}
+                    <div className="text-red-600">{formik.errors.pgpercentage}</div>
                   </div>
                 </div>
 
               </div>
               </div>
 
+              
+{/* Skills */}
+<div className="border-b border-gray-900/10 pb-12">
+<h2 className="text-base font-semibold leading-7 text-gray-900">
+              Skills
+              </h2>
+<div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6"  role="group" aria-labelledby="checkbox-group">
 
+<div className="sm:col-span-2 sm:col-start-1">
+<div className="flex items-center gap-x-3 mb-3">
+
+              <TextInput type="checkbox" name="skills" value="HTML" onChange={formik.handleChange}  />
+              <Label>HTML</Label>
+
+</div>
+<div className="flex items-center gap-x-3  mb-3">
+
+
+              <TextInput type="checkbox" name="skills" value="CSS" onChange={formik.handleChange}  />
+              <Label> CSS</Label>
+            
+</div>
+<div className="flex items-center gap-x-3  mb-3">
+
+
+              <TextInput type="checkbox" name="skills" value="Javascript" onChange={formik.handleChange}  />
+              <Label> Javascript</Label>
+            
+</div>
+
+</div>
+<div className="sm:col-span-2">
+<div className="flex items-center gap-x-3  mb-3">
+
+<TextInput type="checkbox" name="skills" value="MongoDB" onChange={formik.handleChange}  />
+<Label>MongoDB</Label>
+
+</div>
+<div className="flex items-center gap-x-3  mb-3">
+
+
+<TextInput type="checkbox" name="skills" value="MySQL" onChange={formik.handleChange}  />
+<Label>MySQL</Label>
+
+</div>
+<div className="flex items-center gap-x-3  mb-3">
+
+
+<TextInput type="checkbox" name="skills" value="DataStructure" onChange={formik.handleChange}  />
+<Label> DataStructure</Label>
+
+</div>
+
+
+</div>
+
+<div className="sm:col-span-2">
+<div className="flex items-center gap-x-3  mb-3">
+
+<TextInput type="checkbox" name="skills" value="Java" onChange={formik.handleChange}  />
+<Label>Java</Label>
+
+</div>
+<div className="flex items-center gap-x-3  mb-3">
+
+
+<TextInput type="checkbox" name="skills" value="Python" onChange={formik.handleChange}  />
+<Label> Python</Label>
+
+</div>
+<div className="flex items-center gap-x-3  mb-3">
+
+
+<TextInput type="checkbox" name="skills" value="C++" onChange={formik.handleChange}  />
+<Label> C++</Label>
+
+</div>
+
+  
+</div>
+</div>
+
+
+
+</div>
 
             <div className="border-b border-gray-900/10 pb-12">
               <h2 className="text-base font-semibold leading-7 text-gray-900">
@@ -229,6 +323,7 @@ const Home = () => {
                       onChange={formik.handleChange}
                       className="form-control block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     />
+                    <div className="text-red-600">{formik.errors.firstname}</div>
                   </div>
                 </div>
 
@@ -246,6 +341,7 @@ const Home = () => {
                       onChange={formik.handleChange}
                       className="form-control block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     />
+                    <div className="text-red-600">{formik.errors.lastname}</div>
                   </div>
                 </div>
 
@@ -263,6 +359,7 @@ const Home = () => {
                       onChange={formik.handleChange}
                       className="form-control block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     />
+                    <div className="text-red-600">{formik.errors.streetaddress}</div>
                   </div>
                 </div>
 
@@ -280,6 +377,7 @@ const Home = () => {
                       onChange={formik.handleChange}
                       className="form-control block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     />{" "}
+                    <div className="text-red-600">{formik.errors.city}</div>
                   </div>
                 </div>
 
@@ -297,6 +395,7 @@ const Home = () => {
                       onChange={formik.handleChange}
                       className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     />{" "}
+                    <div className="text-red-600">{formik.errors.region}</div>
                   </div>
                 </div>
 
@@ -314,6 +413,7 @@ const Home = () => {
                       onChange={formik.handleChange}
                       className="form-control block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     />
+                    <div className="text-red-600">{formik.errors.postalcode}</div>
                   </div>
                 </div>
               </div>
