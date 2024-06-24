@@ -82,7 +82,7 @@ toast.success("Logged out successfully")
             <Dropdown.Divider />
             <span className="block truncate text-sm font-medium">{user.email}</span>
           </Dropdown.Header>
-          <Dropdown.Item><Link to='/profile'>My Profile</Link></Dropdown.Item>
+          <Dropdown.Item><Link to='/home'>My Profile</Link></Dropdown.Item>
           <Dropdown.Item><Link to='/track'>Track Application</Link></Dropdown.Item>
           <Dropdown.Divider />
          {/* to logout from the account */}
@@ -115,6 +115,7 @@ toast.success("Logged out successfully")
       </form> 
     
             </Navbar>
+            <hr />
 {/* for confirmation when delete account is created */}
              <Modal
         show={showModal}

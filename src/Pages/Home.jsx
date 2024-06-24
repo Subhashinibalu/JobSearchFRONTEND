@@ -5,7 +5,7 @@ import * as Yup from "yup";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { mycontext } from "../App";
-
+Image
 const Home = () => {
   const [user, setUser] = useContext(mycontext);
   const token = localStorage.getItem("Token");
@@ -30,6 +30,7 @@ const Home = () => {
     validationSchema: Yup.object({
 
       about: Yup.string().required("Need to be specified"),
+      skills: Yup.array(),
       ugdegree: Yup.string().required("Need to be specified "),
       ugcourse: Yup.string().required("Need to be specified"),
       ugpercentage: Yup.string().required("Need to be specified"),
@@ -62,23 +63,45 @@ const Home = () => {
       }
     },
   });
+
+const HTML = user.skills.filter((ele)=>ele=="HTML").length
+const CSS = user.skills.filter((ele)=>ele=="CSS").length
+const Javascript = user.skills.filter((ele)=>ele=="Javascripy").length
+const MySQL = user.skills.filter((ele)=>ele=="MySQL").length
+const MongoDB = user.skills.filter((ele)=>ele=="MongoDB").length
+const DataStructure = user.skills.filter((ele)=>ele=="DataStructure").length
+const Java = user.skills.filter((ele)=>ele=="Java").length
+const Python = user.skills.filter((ele)=>ele=="Python").length
+const C = user.skills.filter((ele)=>ele=="C++").length
   return (
     <>
       <div className="m-10 p-10">
         <form onSubmit={formik.handleSubmit}>
           <div className="space-y-12">
           <div className="border-b border-gray-900/10 pb-12 ">
-          <Card className="max-w-sm mx-auto">
-          <h5 className="text-2xl text-center font-bold tracking-tight text-blue-600">
+        
+         
+      <Card className="max-w-8xl mx-auto">
+      <h5 className="text-2xl text-center font-bold tracking-tight text-blue-600">
         USER DETAILS
       </h5>
+          <div className="flex flex-col items-center ">
+          <img
+          alt="Bonnie image"
+          height="96"
+          src="https://tse3.mm.bing.net/th?id=OIP.fjrooo1XQXt5TYi1fHTJXgHaHa&pid=Api&P=0&h=180"
+          width="100"
+          className="mb-3 rounded-full shadow-lg"
+        />
+          </div>
+          
      <p className="text-center"> <span className="font-semibold">{user.username}</span></p> 
      <p className="text-center"> <span className="font-semibold">{user.email}</span></p> 
-         <span className="text-sm text-gray-500 block text-center dark:text-gray-400">This page will showcase the details of User {user.username} with a mail address {user.email}</span>
+         <span className="text-sm text-gray-500 block text-center dark:text-gray-400">{user.about}</span>
        
 
      
-      <span className="text-sm text-gray-500 block text-center dark:text-gray-400">The user can update the user details here</span>
+      <span className="text-sm text-gray-500 block text-center dark:text-gray-400">user {user.username} can update her/his details here</span>
           </Card>
           
 
@@ -220,26 +243,30 @@ const Home = () => {
 <h2 className="text-base font-semibold leading-7 text-gray-900">
               Skills
               </h2>
+              <p className="mt-1 text-sm leading-6 text-gray-600">
+                Select the skills you know
+              </p>
+              
 <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6"  role="group" aria-labelledby="checkbox-group">
 
 <div className="sm:col-span-2 sm:col-start-1">
 <div className="flex items-center gap-x-3 mb-3">
 
-              <TextInput type="checkbox" name="skills" value="HTML" onChange={formik.handleChange}  />
+              <TextInput type="checkbox" name="skills" value="HTML" onChange={formik.handleChange} defaultChecked={HTML==1} />
               <Label>HTML</Label>
 
 </div>
 <div className="flex items-center gap-x-3  mb-3">
 
 
-              <TextInput type="checkbox" name="skills" value="CSS" onChange={formik.handleChange}  />
+              <TextInput type="checkbox" name="skills" value="CSS" onChange={formik.handleChange} defaultChecked={CSS==1} />
               <Label> CSS</Label>
             
 </div>
 <div className="flex items-center gap-x-3  mb-3">
 
 
-              <TextInput type="checkbox" name="skills" value="Javascript" onChange={formik.handleChange}  />
+              <TextInput type="checkbox" name="skills" value="Javascript" onChange={formik.handleChange} defaultChecked={Javascript==1}  />
               <Label> Javascript</Label>
             
 </div>
@@ -248,21 +275,21 @@ const Home = () => {
 <div className="sm:col-span-2">
 <div className="flex items-center gap-x-3  mb-3">
 
-<TextInput type="checkbox" name="skills" value="MongoDB" onChange={formik.handleChange}  />
+<TextInput type="checkbox" name="skills" value="MongoDB" onChange={formik.handleChange}  defaultChecked={MongoDB==1}/>
 <Label>MongoDB</Label>
 
 </div>
 <div className="flex items-center gap-x-3  mb-3">
 
 
-<TextInput type="checkbox" name="skills" value="MySQL" onChange={formik.handleChange}  />
+<TextInput type="checkbox" name="skills" value="MySQL" onChange={formik.handleChange} defaultChecked={MySQL==1} />
 <Label>MySQL</Label>
 
 </div>
 <div className="flex items-center gap-x-3  mb-3">
 
 
-<TextInput type="checkbox" name="skills" value="DataStructure" onChange={formik.handleChange}  />
+<TextInput type="checkbox" name="skills" value="DataStructure" onChange={formik.handleChange}  defaultChecked={DataStructure==1}/>
 <Label> DataStructure</Label>
 
 </div>
@@ -273,27 +300,28 @@ const Home = () => {
 <div className="sm:col-span-2">
 <div className="flex items-center gap-x-3  mb-3">
 
-<TextInput type="checkbox" name="skills" value="Java" onChange={formik.handleChange}  />
+<TextInput type="checkbox" name="skills" value="Java" onChange={formik.handleChange} defaultChecked={Java==1} />
 <Label>Java</Label>
 
 </div>
 <div className="flex items-center gap-x-3  mb-3">
 
 
-<TextInput type="checkbox" name="skills" value="Python" onChange={formik.handleChange}  />
+<TextInput type="checkbox" name="skills" value="Python" onChange={formik.handleChange} defaultChecked={Python==1} />
 <Label> Python</Label>
 
 </div>
 <div className="flex items-center gap-x-3  mb-3">
 
 
-<TextInput type="checkbox" name="skills" value="C++" onChange={formik.handleChange}  />
+<TextInput type="checkbox" name="skills" value="C++" onChange={formik.handleChange} defaultChecked={C==1} />
 <Label> C++</Label>
 
 </div>
 
   
 </div>
+
 </div>
 
 
