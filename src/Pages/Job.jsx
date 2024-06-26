@@ -1,13 +1,14 @@
 import React, { useContext, useEffect, useState} from 'react';
 import axios from 'axios';
 import { mycontext } from '../App';
-import { Button, Card } from 'flowbite-react';
-import { HiAcademicCap, HiLocationMarker, HiMail } from 'react-icons/hi';
-import { AiOutlineMail } from 'react-icons/ai';
+import { Button} from 'flowbite-react';
+
 
 const Job = () => {
   const [jobs, setJobs] = useState([])
   const [user,setUser] = useContext(mycontext)
+  const token = localStorage.getItem('Token');
+  const [applied,setApplied] = useState([])
   useEffect(() => {
     fetchData();
   }, []);
@@ -15,26 +16,49 @@ const Job = () => {
   const fetchData = async () => {
     const response=await axios.get(`http://localhost:5000/api/admin/getjobs/${user._id}`)
 if (response.status==200){
-  setJobs(response.data)
-  console.log(response.data)
+  setJobs(response.data)//user value updated with applied job id
+ 
   
  
 }
 else{
   console.log(response.data.message)
 }
-
-
    
   };
-  console.log(jobs)
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const jobId =e.target[0].value;
+   
+    try {
+      const response = await axios.put(
+        `http://localhost:5000/api/user/application/${jobId}/${token}`,
+        
+      );
+      if (response.status == 200) {
+        setUser(response.data.rest);
+        
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  const handleUpdate=(index)=>{
+    setApplied([...applied,true])
+  }
+  
+  
+
+ 
     return (
         <>
        
-       <div className="m-10 p-10">
+       <div className="m-10 p-10 min-h-screen">
        {jobs.map((ele, index) => {
         return (
+          
           <div key={index}>
+            <form onSubmit={handleSubmit}>
              <div className="space-y-12 p-4 m-2 ">
              
            
@@ -61,14 +85,18 @@ else{
   <p className='text-center  overflow-hidden '>Mail us:<br/><span className="shadow-md mt-1 ">{ele.email}</span></p>
   </div>
  <div className="md:col-span-1 p-4 ms-10 font-serif flex justify-center items-center">
- <Button className='bg-blue-700'>APPLY</Button>
+ <input type="text" className="hidden" value={ele._id}/>
+{user.applications.includes(`${ele._id}`)?<Button>APPLIED</Button>: <Button className='bg-blue-700'type='submit' onClick={()=>handleUpdate(index)}>APPLY</Button>}
+  
+ 
   </div>
         </div>
              
             
             </div>
+            </form>
             </div>
-        
+           
         );
       })}
         

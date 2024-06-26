@@ -22,7 +22,7 @@ export const mycontext = createContext('')
 const App = () => {
   const [token,setToken] = useState('')
   const [user,setUser] = useState('')
-  
+  const [jobs, setJobs] = useState([])
   
   return (
     <>
@@ -31,7 +31,7 @@ const App = () => {
     <div>
       <ToastContainer/>
     </div>
-    <mycontext.Provider value={[token,setToken,user,setUser]}>
+    <mycontext.Provider value={[token,setToken,user,setUser,jobs, setJobs]}>
       <Header/>
     <Routes>
 
