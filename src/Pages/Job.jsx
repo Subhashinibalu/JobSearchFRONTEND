@@ -1,7 +1,9 @@
 import React, { useContext, useEffect, useState} from 'react';
 import axios from 'axios';
 import { mycontext } from '../App';
-import { Card } from 'flowbite-react';
+import { Button, Card } from 'flowbite-react';
+import { HiAcademicCap, HiLocationMarker, HiMail } from 'react-icons/hi';
+import { AiOutlineMail } from 'react-icons/ai';
 
 const Job = () => {
   const [jobs, setJobs] = useState([])
@@ -33,26 +35,40 @@ else{
        {jobs.map((ele, index) => {
         return (
           <div key={index}>
-             <div className="space-y-12 p-10 m-5">
-             <div className="border border-gray-900/10 ">
+             <div className="space-y-12 p-4 m-2 ">
+             
            
-            <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-            <div className="sm:col-span-2 sm:col-start-1">
-        <img
-          alt="Bonnie image"
-          height="96"
-          src="/images/people/profile-picture-3.jpg"
-          width="96"
-          className="mb-3 rounded-full shadow-lg"
-        />
-        <a href={ele.link} target='_blank' className="mb-1 text-xl font-medium text-gray-900 dark:text-white">{ele.link}</a>
+            <div className="border border-gray-900/10 rounded-lg mx-auto bg-gradient-to-r from-indigo-400 to-cyan-400 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-6 p-12">
+              {/* for company name  and link */}
+            <div className="md:col-span-2 sm:col-start-1 mt-5">
+        <h1 className='text-center mb-3 mt-5 md:text-4xl fond-bold sm:text-xl font-serif'>{ele.company}</h1>
+        <a href={ele.link} target='_blank' className="md:text-center overflow-hidden block hover:text-transparent hover:bg-clip-text  hover:bg-gradient-to-br from-blue-200 to-cyan-200 text-gray-800"><i>{ele.link}</i></a>
         </div>
+
+{/* for role and salary*/}
+<div className="md:col-span-1 p-3 font-serif">
+  <p className='text-center '>Role:<br/><span className="shadow-md mt-5">{ele.role}</span></p>
+  <p className='text-center mt-8 '>Package:<br/><span className="shadow-md mt-1">{ele.salary}</span> /yr</p>
+  </div>
+  {/* for location and skills*/}
+<div className="md:col-span-1 p-3  font-serif">
+  <p className='text-center ' >Location:<br/><span className="shadow-md mt-1">{ele.location}</span></p>
+  <p className='text-center mt-8 overflow-x-auto '>Skills:<br/><span className="shadow-md mt-1 ">{ele.skillsRequired}</span></p>
+  </div>
+ {/* to apply*/}
+ <div className="md:col-span-1 p-3  font-serif flex justify-center items-center">
+  
+  <p className='text-center  overflow-hidden '>Mail us:<br/><span className="shadow-md mt-1 ">{ele.email}</span></p>
+  </div>
+ <div className="md:col-span-1 p-4 ms-10 font-serif flex justify-center items-center">
+ <Button className='bg-blue-700'>APPLY</Button>
+  </div>
         </div>
              
             
             </div>
             </div>
-          </div>
+        
         );
       })}
         
