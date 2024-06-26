@@ -32,28 +32,34 @@ console.log(appliedJobs)
 
     return (
         <>
-         <div className="overflow-x-auto p-10 m-10 min-h-screen">
-      <Table striped>
-        <Table.Head>
-          <Table.HeadCell>Company Name</Table.HeadCell>
+        
+         <div className="overflow-x-auto p-10 m-10 min-h-screen bg-blue-200">
+         <h1 className="text-center text-3xl text-blue-600 font-serif mb-10 p-5">JOBS APPLIED</h1>
+      <Table hoverable>
+        <Table.Head className='text-center text-2xl bg-transparent text-blue-400 font-serif '>
+        <Table.HeadCell>No</Table.HeadCell>
+          <Table.HeadCell>Company</Table.HeadCell>
           <Table.HeadCell>Role</Table.HeadCell>
-          <Table.HeadCell>Category</Table.HeadCell>
-          <Table.HeadCell>Price</Table.HeadCell>
-          <Table.HeadCell>
-            <span className="sr-only">Edit</span>
-          </Table.HeadCell>
+          <Table.HeadCell>Salary</Table.HeadCell>
+          <Table.HeadCell>Location</Table.HeadCell>
+          <Table.HeadCell>Link</Table.HeadCell>
+          
         </Table.Head>
         {appliedJobs.map((ele,index)=>{
           return(
-            <div key={index}>
+            <>
               <Table.Body className="divide-y">
-              <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
+              <Table.Row className=" m-2 text-lg text-black text-center p-2 shadow-md hover:bg-blue-300">
+              <Table.Cell>{index+1}</Table.Cell>
               <Table.Cell>{ele.company}</Table.Cell>
               <Table.Cell>{ele.role}</Table.Cell>
+              <Table.Cell>{ele.salary}</Table.Cell>
+              <Table.Cell>{ele.location}</Table.Cell>
+              <Table.Cell>{ele.link}</Table.Cell>
                 </Table.Row>
                 </Table.Body>
 
-            </div>
+            </>
           )
         })}
         </Table>

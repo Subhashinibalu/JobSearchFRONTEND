@@ -78,9 +78,9 @@ const Home = () => {
   const C = user.skills.filter((ele) => ele == "C++").length;
   return (
     <>
-      <div className="m-10 p-10">
+      <div className="m-10 p-10 bg-gradient-to-r from-indigo-400 to-cyan-400 rounded-lg">
         <form onSubmit={formik.handleSubmit}>
-          <div className="space-y-12">
+          <div className="space-y-12 ">
             <div className="border-b border-gray-900/10 pb-12 ">
               {user.isAdmin ? (
                 <Button gradientDuoTone="purpleToBlue">
