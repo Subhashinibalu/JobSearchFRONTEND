@@ -53,13 +53,13 @@ else{
     return (
         <>
        
-       <div className="m-10 p-10 min-h-screen bg-blue-100">
+       <div className=" p-10 min-h-screen ">
        {jobs.map((ele, index) => {
         return (
           
           <div key={index}>
             <form onSubmit={handleSubmit}>
-             <div className="space-y-12 p-4 m-2 ">
+             <div className="space-y-12 p-4 m-2 hover:shadow-xl">
              
            
             <div className="border border-gray-900/10 rounded-lg mx-auto bg-gradient-to-r from-indigo-400 to-cyan-400 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-6 p-12">

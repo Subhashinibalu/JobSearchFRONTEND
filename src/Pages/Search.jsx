@@ -53,7 +53,7 @@ const Search = () => {
 
   return (
     <>
-      <div className="m-10 p-10 min-h-screen bg-blue-100 overflow-auto">
+      <div className="m-2 p-8 min-h-screen  overflow-auto">
         <form>
           <TextInput
             type="text"
@@ -61,7 +61,7 @@ const Search = () => {
             onChange={(e) =>setQuery(e.target.value)}
            
             rightIcon={AiOutlineSearch}
-            className="hidden md:inline"
+            className="hidden md:inline  "
           />
         </form>
 
@@ -69,7 +69,7 @@ const Search = () => {
           return (
             <div key={index}>
               <form onSubmit={handleSubmit}>
-                <div className="space-y-12 p-4 m-2 ">
+                <div className="space-y-12 p-4 m-2 hover:shadow-xl">
                   <div className="border border-gray-900/10 rounded-lg mx-auto bg-gradient-to-r from-indigo-400 to-cyan-400 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-6 p-12">
                     {/* for company name  and link */}
                     <div className="md:col-span-2 sm:col-start-1 mt-5">

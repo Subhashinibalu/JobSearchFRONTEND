@@ -114,7 +114,7 @@ const Home = () => {
                   </span>
 
                   <span className="text-sm text-gray-500 block text-center dark:text-gray-400">
-                    user {user.username} can update her/his details here
+                    Hi {user.username}! you can update your profile details here
                   </span>
                 </Card>
               )}

@@ -28,15 +28,15 @@ const appliedJobs = jobs.filter((job)=>{
     
 }
 )
-console.log(appliedJobs)
+
 
     return (
         <>
         
-         <div className="overflow-x-auto p-10 m-10 min-h-screen bg-blue-200">
+         <div className="overflow-auto p-10  min-h-screen ">
          <h1 className="text-center text-3xl text-blue-600 font-serif mb-10 p-5">JOBS APPLIED</h1>
-      <Table hoverable>
-        <Table.Head className='text-center text-2xl bg-transparent text-blue-400 font-serif '>
+      <Table hoverable className='bg-blue-100' >
+        <Table.Head className='text-center text-2xl bg-transparent text-blue-400 font-serif overflow-auto'>
         <Table.HeadCell>No</Table.HeadCell>
           <Table.HeadCell>Company</Table.HeadCell>
           <Table.HeadCell>Role</Table.HeadCell>
@@ -48,9 +48,9 @@ console.log(appliedJobs)
         {appliedJobs.map((ele,index)=>{
           return(
             <>
-              <Table.Body className="divide-y" key={index} >
+              <Table.Body className="divide-y overflow-auto" >
               <Table.Row className=" m-2 text-lg text-black text-center p-2 shadow-md hover:bg-blue-300">
-              <Table.Cell>{index+1}</Table.Cell>
+              <Table.Cell key={index} >{index+1}</Table.Cell>
               <Table.Cell>{ele.company}</Table.Cell>
               <Table.Cell>{ele.role}</Table.Cell>
               <Table.Cell>{ele.salary}</Table.Cell>

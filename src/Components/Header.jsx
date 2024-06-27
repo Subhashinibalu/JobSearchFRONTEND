@@ -39,7 +39,7 @@ toast.success("Logged out successfully")
    
    //on successful deletion of 
     if (response.status==200) {
-      toast.success( response.data.message)
+      toast.info( response.data.message)
       setUser('')//user data will be emptied
       localStorage.removeItem('Token')//token in local storage will be removed
       navigate('/')//page will be navigated to registration page
@@ -59,12 +59,12 @@ toast.success("Logged out successfully")
 
     return (
         <>
-         <Navbar fluid rounded className='p-5 m-2 mt-2'>
+         <Navbar fluid rounded className='p-6 bg-blue-100'>
 
             {/*  logo and name display */}
          <Navbar.Brand className=" text-2xl md:ms-2 lg:ms-14  lg:text-4xl">
         <img src="https://cdn-icons-png.freepik.com/256/10903/10903438.png?ga=GA1.1.937687561.1710832007&semt=ais_hybrid" className="mr-3 h-6 sm:h-9" alt="Flowbite React Logo" />
-        <span className="self-center whitespace-nowrap   font-semibold text-blue-600">JobSearch</span>
+        <span className="self-center whitespace-nowrap  font-semibold text-blue-600">JobSearch</span>
       </Navbar.Brand>
 
       
@@ -105,10 +105,10 @@ toast.success("Logged out successfully")
       </div>
       {/* pages */}
       <Navbar.Collapse >
-        <Navbar.Link active={path === '/home'}  as={'div'}><Link to='/home' >Home</Link></Navbar.Link>
-        <Navbar.Link active={path === '/job'} as={'div'}><Link to='/job'>Job Recommendation</Link></Navbar.Link>
-        <Navbar.Link active={path === '/track'} as={'div'}><Link to='/track'>My Applications</Link></Navbar.Link>
-        <Navbar.Link active={path === '/search'} as={'div'}><Link to='/search'>Find My Job</Link></Navbar.Link>
+        <Navbar.Link active={path === '/home'}  as={'div'}><Link to='/home' className='text-lg font-serif hover:text-blue-600'>Home</Link></Navbar.Link>
+        <Navbar.Link active={path === '/job'} as={'div'}><Link to='/job'className='text-lg font-serif hover:text-blue-600'>Job Recommendation</Link></Navbar.Link>
+        <Navbar.Link active={path === '/track'} as={'div'}><Link to='/track'className='text-lg font-serif hover:text-blue-600'>My Applications</Link></Navbar.Link>
+        <Navbar.Link active={path === '/search'} as={'div'}><Link to='/search'className='text-lg font-serif hover:text-blue-600'>Find My Job</Link></Navbar.Link>
       
 
        
