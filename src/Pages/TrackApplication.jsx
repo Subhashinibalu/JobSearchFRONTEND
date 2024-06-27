@@ -48,7 +48,7 @@ console.log(appliedJobs)
         {appliedJobs.map((ele,index)=>{
           return(
             <>
-              <Table.Body className="divide-y">
+              <Table.Body className="divide-y" key={index} >
               <Table.Row className=" m-2 text-lg text-black text-center p-2 shadow-md hover:bg-blue-300">
               <Table.Cell>{index+1}</Table.Cell>
               <Table.Cell>{ele.company}</Table.Cell>

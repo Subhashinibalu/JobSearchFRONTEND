@@ -11,8 +11,13 @@ import { HiOutlineExclamationCircle } from 'react-icons/hi';
 
 const Header = () => {
   const token = localStorage.getItem('Token');
+
+  
   //to get user details if user exist
  const[user,setUser]=useContext(mycontext)
+//for search fuctionalities
+
+
  const [showModal, setShowModal] = useState(false);
 
  //navigateion purpose
@@ -62,9 +67,7 @@ toast.success("Logged out successfully")
         <span className="self-center whitespace-nowrap   font-semibold text-blue-600">JobSearch</span>
       </Navbar.Brand>
 
-      <Button outline gradientDuoTone="purpleToBlue" className='lg:hidden md:hidden md:order-1' >
-        <AiOutlineSearch/>
-     </Button>
+      
      
 
       {/* UserIcon */}
@@ -105,14 +108,12 @@ toast.success("Logged out successfully")
         <Navbar.Link active={path === '/home'}  as={'div'}><Link to='/home' >Home</Link></Navbar.Link>
         <Navbar.Link active={path === '/job'} as={'div'}><Link to='/job'>Job Recommendation</Link></Navbar.Link>
         <Navbar.Link active={path === '/track'} as={'div'}><Link to='/track'>My Applications</Link></Navbar.Link>
+        <Navbar.Link active={path === '/search'} as={'div'}><Link to='/search'>Find My Job</Link></Navbar.Link>
       
 
        
       </Navbar.Collapse>
-       {/* searchbar */}
-       <form className='lg:min-w-80 md:min-w-2xl sm:min-w-30 '>
-        <TextInput type="text" placeholder='Job Search...' rightIcon={AiOutlineSearch} className='hidden md:inline' />
-      </form> 
+    
     
             </Navbar>
             <hr />

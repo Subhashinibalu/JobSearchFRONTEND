@@ -43,7 +43,7 @@ else{
       console.log(error);
     }
   }
-  const handleUpdate=(index)=>{
+  const handleUpdate=()=>{
     setApplied([...applied,true])
   }
   
@@ -53,7 +53,7 @@ else{
     return (
         <>
        
-       <div className="m-10 p-10 min-h-screen">
+       <div className="m-10 p-10 min-h-screen bg-blue-100">
        {jobs.map((ele, index) => {
         return (
           
@@ -85,7 +85,7 @@ else{
   <p className='text-center  overflow-hidden '>Mail us:<br/><span className="shadow-md mt-1 ">{ele.email}</span></p>
   </div>
  <div className="md:col-span-1 p-4 ms-10 font-serif flex justify-center items-center">
- <input type="text" className="hidden" value={ele._id}/>
+ <input type="text" className="hidden" value={ele._id} readOnly/>
 {user.applications.includes(`${ele._id}`)?<Button>APPLIED</Button>: <Button className='bg-blue-700'type='submit' onClick={()=>handleUpdate(index)}>APPLY</Button>}
   
  
