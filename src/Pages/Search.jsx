@@ -52,12 +52,12 @@ const Search = () => {
 
   return (
     <>
-      <div className="m-2 p-8 min-h-screen  overflow-auto">
+      <div className="m-2 p-8 max-h-screen  overflow-auto">
         {/* search bar */}
         <form>
           <TextInput
             type="text"
-            placeholder="Job Search..."
+            placeholder="try company name or role or location or salary!"
             onChange={(e) => setQuery(e.target.value)}
             rightIcon={AiOutlineSearch}
             className="hidden md:inline  "

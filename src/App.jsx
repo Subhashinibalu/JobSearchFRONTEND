@@ -12,7 +12,6 @@ import ResetPassword from "./Pages/ResetPassword";
 import Header from "./Components/Header";
 import FooterComp from "./Components/FooterComp";
 import PrivateRoute from "./Components/PrivateRoute";
-import UserProfile from "./Pages/UserProfile";
 import OnlyAdminPrivateRoute from "./Components/OnlyAdminPrivateRoute";
 import PostJobs from "./Pages/PostJobs";
 import PageNotFound from "./Pages/PageNotFound";
@@ -37,7 +36,7 @@ const App = () => {
               <Route path="/job" element={<Job />} />
               <Route path="/track" element={<TrackApplication />} />
               <Route path="/search" element={<Search />} />
-              <Route path="/profile" element={<UserProfile />} />
+              
             </Route>
             <Route element={<OnlyAdminPrivateRoute />}>
               <Route path="/post-jobs" element={<PostJobs />} />
