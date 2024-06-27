@@ -7,10 +7,11 @@ import { toast } from "react-toastify";
 import { mycontext } from "../App";
 import { Link } from "react-router-dom";
 
-Image;
+//home page
 const Home = () => {
   const [user, setUser] = useContext(mycontext);
   const token = localStorage.getItem("Token");
+
   // formik declaration
   const formik = useFormik({
     initialValues: {
@@ -40,8 +41,12 @@ const Home = () => {
       pgpercentage: Yup.string(),
       skills: Yup.array(),
       expectingSalary: Yup.string().required("Need to be specified"),
-      firstname: Yup.string().required("Need to be specified in Capital letters"),
-      lastname: Yup.string().required("Need to be specified in Capital letters"),
+      firstname: Yup.string().required(
+        "Need to be specified in Capital letters"
+      ),
+      lastname: Yup.string().required(
+        "Need to be specified in Capital letters"
+      ),
       streetaddress: Yup.string().required("Need to be specified"),
       city: Yup.string().required("Need to be specified"),
       region: Yup.string().required("Need to be specified"),
@@ -49,11 +54,12 @@ const Home = () => {
     }),
     onSubmit: async (values) => {
       try {
+        //update user profile
         const response = await axios.put(
           `http://localhost:5000/api/user/update/${user._id}/${token}`,
           values
         );
-       
+
         if (response.status == 200) {
           toast.success(response.data.message);
 
@@ -72,16 +78,20 @@ const Home = () => {
   const Javascript = user.skills.filter((ele) => ele == "Javascripy").length;
   const MySQL = user.skills.filter((ele) => ele == "MySQL").length;
   const MongoDB = user.skills.filter((ele) => ele == "MongoDB").length;
-  const DataStructure = user.skills.filter((ele) => ele == "DataStructure").length;
+  const DataStructure = user.skills.filter(
+    (ele) => ele == "DataStructure"
+  ).length;
   const Java = user.skills.filter((ele) => ele == "Java").length;
   const Python = user.skills.filter((ele) => ele == "Python").length;
   const C = user.skills.filter((ele) => ele == "C++").length;
+
   return (
     <>
       <div className="m-10 p-10 bg-blue-200 rounded-lg">
         <form onSubmit={formik.handleSubmit}>
           <div className="space-y-12 ">
             <div className="border-b border-gray-900/10 pb-12 ">
+              {/* if the user is admin will show option to post jobs instead of card which display user details */}
               {user.isAdmin ? (
                 <Button gradientDuoTone="purpleToBlue">
                   <Link to="/post-jobs">Post New Jobs +</Link>
@@ -119,7 +129,7 @@ const Home = () => {
                 </Card>
               )}
             </div>
-
+            {/* About the user */}
             <div className="border-b border-gray-900/10 pb-12">
               <div className="col-span-full">
                 <Label
@@ -219,7 +229,6 @@ const Home = () => {
                       onChange={formik.handleChange}
                       className="form-control block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     />{" "}
-                 
                   </div>
                 </div>
                 <div className="sm:col-span-2">
@@ -236,7 +245,6 @@ const Home = () => {
                       onChange={formik.handleChange}
                       className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     />{" "}
-                   
                   </div>
                 </div>
                 <div className="sm:col-span-2">
@@ -253,7 +261,6 @@ const Home = () => {
                       onChange={formik.handleChange}
                       className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     />{" "}
-                 
                   </div>
                 </div>
               </div>
@@ -372,8 +379,8 @@ const Home = () => {
                 </div>
               </div>
             </div>
-{/* salary expectation per year */}
-<div className="border-b border-gray-900/10 pb-12">
+            {/* salary expectation per year */}
+            <div className="border-b border-gray-900/10 pb-12">
               <h2 className="text-base font-semibold leading-7 text-gray-900">
                 Salary Expectation
               </h2>
@@ -382,7 +389,6 @@ const Home = () => {
               </p>
               <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                 <div className="sm:col-span-3">
-               
                   <div className="mt-2">
                     <TextInput
                       type="number"
@@ -391,20 +397,19 @@ const Home = () => {
                       defaultValue={user.expectingSalary || ""}
                       onChange={formik.handleChange}
                       className="form-control block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                    />   <Label
-                    value="per year*"
-                    className="form-label block text-sm font-medium leading-6 text-gray-900"
-                  />
+                    />{" "}
+                    <Label
+                      value="per year*"
+                      className="form-label block text-sm font-medium leading-6 text-gray-900"
+                    />
                     <div className="text-red-600">
                       {formik.errors.expectingSalary}
                     </div>
                   </div>
                 </div>
-                </div>
               </div>
-
-
-
+            </div>
+            {/* personal informations */}
             <div className="border-b border-gray-900/10 pb-12">
               <h2 className="text-base font-semibold leading-7 text-gray-900">
                 Personal Information
@@ -534,9 +539,9 @@ const Home = () => {
             <Button
               type="submit"
               gradientDuoTone="purpleToBlue"
-              className="rounded-md px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+              className="rounded-md px-3 py-2 text-sm font-semibold font-serif text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
             >
-              Save
+              UPDATE
             </Button>
           </div>
         </form>

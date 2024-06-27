@@ -4,34 +4,32 @@ import { mycontext } from "../App";
 import { Button, TextInput } from "flowbite-react";
 import { AiOutlineSearch } from "react-icons/ai";
 
-
 // this page is to show the jobs based on the search and preferences
 
 const Search = () => {
   const [jobs, setJobs] = useState([]);
-
   const [user, setUser] = useContext(mycontext);
   const token = localStorage.getItem("Token");
   const [applied, setApplied] = useState([]);
   const [query, setQuery] = useState("");
 
-
   useEffect(() => {
     fetchData();
-  }, [query]);
+  }, [query]); //need to be render when query is changed
 
   const fetchData = async () => {
+    //sending the search value to backend simultaneously when search input is given
     const response = await axios.get(
       `http://localhost:5000/api/admin/getsearch?query=${query}`
     );
     if (response.status == 200) {
-      setJobs(response.data);
+      setJobs(response.data); //on successful fetch response is set to jobs
     } else {
       console.log(response.data.message);
     }
   };
 
-  
+  //to handle job application
   const handleSubmit = async (e) => {
     e.preventDefault();
     const jobId = e.target[0].value;
@@ -47,6 +45,7 @@ const Search = () => {
       console.log(error);
     }
   };
+  //to manage button status
   const handleUpdate = () => {
     setApplied([...applied, true]);
   };
@@ -54,18 +53,18 @@ const Search = () => {
   return (
     <>
       <div className="m-2 p-8 min-h-screen  overflow-auto">
+        {/* search bar */}
         <form>
           <TextInput
             type="text"
             placeholder="Job Search..."
-            onChange={(e) =>setQuery(e.target.value)}
-           
+            onChange={(e) => setQuery(e.target.value)}
             rightIcon={AiOutlineSearch}
             className="hidden md:inline  "
           />
         </form>
 
-{jobs.map((ele, index) => {
+        {jobs.map((ele, index) => {
           return (
             <div key={index}>
               <form onSubmit={handleSubmit}>
@@ -147,10 +146,8 @@ const Search = () => {
           );
         })}
       </div>
-
     </>
   );
 };
 
 export default Search;
-
