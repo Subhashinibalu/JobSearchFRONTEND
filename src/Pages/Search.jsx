@@ -22,7 +22,7 @@ const Search = () => {
 
   const fetchData = async () => {
     const response = await axios.get(
-      `http://localhost:5000/api/admin/getsearch`
+      `http://localhost:5000/api/admin/getsearch?query=${query}`
     );
     if (response.status == 200) {
       setJobs(response.data);
@@ -53,7 +53,7 @@ const Search = () => {
 
   return (
     <>
-      <div className="m-10 p-10 man-h-screen bg-blue-100 overflow-auto">
+      <div className="m-10 p-10 min-h-screen bg-blue-100 overflow-auto">
         <form>
           <TextInput
             type="text"
@@ -65,8 +65,7 @@ const Search = () => {
           />
         </form>
 
-{jobs.filter((job) =>(job.company.toLowerCase().includes(query.toLowerCase())||
-job.role.toLowerCase().includes(query.toLowerCase())||job.location.toLowerCase().includes(query.toLowerCase()))).map((ele, index) => {
+{jobs.map((ele, index) => {
           return (
             <div key={index}>
               <form onSubmit={handleSubmit}>
@@ -149,7 +148,6 @@ job.role.toLowerCase().includes(query.toLowerCase())||job.location.toLowerCase()
         })}
       </div>
 
-      <h1>search</h1>
     </>
   );
 };
