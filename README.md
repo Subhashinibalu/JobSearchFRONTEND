@@ -128,8 +128,6 @@
 ## CONCLUSION
 
  The pages of this application and its usage are explained above. The source code is available in this repository named JobSearch Front end. The front end deployed URL is shared here.
-[Frontend Deployed URL](https://jobsearchplatform.netlify.app/)
+[Frontend Deployed URL](https://jobsearchplatform.netlify.app/). *Kindly Check.THANK YOU!*
 ***
   
-
-            KINDLY CHECK.THANK YOU!
