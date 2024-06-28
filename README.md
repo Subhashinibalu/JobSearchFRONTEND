@@ -103,6 +103,7 @@
 - Apart from normal user home page, this user admin home page contains an option to post new jobs.
 
 - Onclicking the Post New Job button the page will be navigated to post job page.
+***
 
 ### POST JOB PAGE
 
@@ -126,9 +127,9 @@
 
 ## CONCLUSION
 
-            The pages of this application and its usage are explained above. The source code is available in this repository named JobSearch Front end. The front end deployed URL is shared below.
-
+ The pages of this application and its usage are explained above. The source code is available in this repository named JobSearch Front end. The front end deployed URL is shared here.
+[Frontend Deployed URL](https://jobsearchplatform.netlify.app/)
 ***
-[Frontend Deployed URL](https://jobsearchplatform.netlify.app/)  
+  
 
             KINDLY CHECK.THANK YOU!
