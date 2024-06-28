@@ -8,7 +8,7 @@
 
 ### REGISTRATION PAGE
 
-![alt text](<Screen Images/Registration page.png>)
+![registration page](<Pages Image/Registration page.png>)
 
 
 
@@ -25,7 +25,7 @@
 
 ### LOGIN PAGE
 
-![alt text](<Screen Images/Login Page.png>)
+![login page](<Pages Image/Login Page.png>)
 
 - The Login page contains columns to enter email and password.
 
@@ -38,7 +38,7 @@
 
 ### FORGOT PASSWORD PAGE
 
-![alt text](<Screen Images/Forgot password page.png>)
+![forgot password page](<Pages Image/Forgot password page.png>)
 
 - This page contains a field to enter password
 
@@ -46,12 +46,12 @@
 
 - That mail contains link to reset the password
   
-![alt text](<Screen Images/Forgot password mail.png>)
+![forget password mail](<Pages Image/Forgot password mail.png>)
 ***
 
-### RESET PASSWORD
+### RESET PASSWORD PAGE
 
-![alt text](<Screen Images/password reset page.png>)
+![reset password page](<Pages Image/password reset page.png>)
 
 - This page contains a field to enter the new password.
 
@@ -60,7 +60,7 @@
 
 ### HOME PAGE
 
-![alt text](<Screen Images/Home page.png>)
+![home page](<Pages Image/Home page.png>)
 
 - The details entered while registering will be displayed here in a card
 
@@ -71,7 +71,7 @@
 
 ### JOB RECOMMENDATION PAGE
 
-![alt text](<Screen Images/Job recommendation page.png>)
+![job recommendation page](<Pages Image/Job recommendation page.png>)
 
 - In this page the jobs that suits the user skills will be displayed in the card.
 
@@ -80,14 +80,14 @@
 
 ### MY APPLICATION PAGE
 
-![alt text](<Screen Images/Track Application page.png>)
+![my application page](<Pages Image/Track Application page.png>)
 
 - In this page, the jobs applied by the user are displayed in the table.
 ***
 
 ### JOB SEARCH PAGE
 
-![alt text](<Screen Images/Job search page.png>)
+![Job search page](<Pages Image/Job search page.png>)
 
 - This page will display all the jobs.
 
@@ -98,7 +98,7 @@
 
 ### ADMIN HOME PAGE
 
-![alt text](<Screen Images/Admin user home page.png>)
+![admin home page](<Pages Image/Admin user home page.png>)
 
 - Apart from normal user home page, this user admin home page contains an option to post new jobs.
 
@@ -106,7 +106,7 @@
 
 ### POST JOB PAGE
 
-![alt text](<Screen Images/post new job page.png>)
+![Post new job page](<Pages Image/post new job page.png>)
 
 - This page contains fields to enter the company and job details.
 
@@ -114,12 +114,12 @@
 
 - On posting a new job, the user who has matching skills with the skills required for the posted job will get a mail notifying a new job posted.
 
-![alt text](<Screen Images/Job posted mail.png>)
+![new job posted mail](<Pages Image/Job posted mail.png>)
 
 ***
 ### PAGE NOT FOUND
 
-![page not found](<Screen Images/page not found.png>)
+![page not found](<Pages Image/page not found.png>)
 
 - On request of an non-existing page this page will appear.
 
