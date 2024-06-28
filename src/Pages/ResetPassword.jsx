@@ -62,7 +62,7 @@ const ResetPassword = () => {
                 <TextInput
                   type="password"
                   className="form-control"
-                  placeholder="Enter Your Password"
+                  placeholder="Enter a New Password"
                   name="password"
                   value={formik.values.password}
                   onChange={formik.handleChange}
