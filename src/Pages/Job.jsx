@@ -51,9 +51,10 @@ const Job = () => {
   
   return (
     <> 
-    {jobs.length == 0 ? alert("To get job recommendations, kindly fill out the user details")
-      :<div className=" p-10 max-h-screen overflow-auto ">
-      {jobs.map((ele, index) => {
+    
+    
+     <div className=" p-10 max-h-screen overflow-auto ">
+      {jobs.length>0 ? jobs.map((ele, index) => {
         return (
           <div key={index}>
             <form onSubmit={handleSubmit}>
@@ -135,10 +136,8 @@ const Job = () => {
             </form>
           </div>
         );
-      })}
-    </div>}
-    
-      
+      }):alert("Kindly fill out the user details")}
+    </div> 
      
     </>
   );
