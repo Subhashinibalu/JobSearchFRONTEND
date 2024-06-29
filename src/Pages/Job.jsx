@@ -48,17 +48,11 @@ const Job = () => {
   const handleUpdate = () => {
     setApplied([...applied, true]);
   };
-  if(jobs.length == 0){
-    alert("To get job recommendations, kindly fill out the user details")
-    navigate('/home')
-    
-  }
-
+  
   return (
     <> 
-    
-    
-     <div className=" p-10 max-h-screen overflow-auto ">
+    {jobs.length == 0 ? alert("To get job recommendations, kindly fill out the user details")
+      :<div className=" p-10 max-h-screen overflow-auto ">
       {jobs.map((ele, index) => {
         return (
           <div key={index}>
@@ -142,7 +136,9 @@ const Job = () => {
           </div>
         );
       })}
-    </div> 
+    </div>}
+    
+      
      
     </>
   );
