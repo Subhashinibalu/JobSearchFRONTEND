@@ -6,6 +6,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { SiMinutemailer } from "react-icons/si";
 
 // Forget Password Page 
 const ForgetPassword = () => {
@@ -72,7 +73,7 @@ const ForgetPassword = () => {
               </div>
 
               <Button gradientDuoTone="purpleToBlue" type="submit">
-                Submit
+                Send Mail <SiMinutemailer/>
               </Button>
             </form>
           </div>

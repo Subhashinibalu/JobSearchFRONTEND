@@ -9,6 +9,8 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { mycontext } from "../App";
 
+import { CgLogIn } from "react-icons/cg";
+
 // login form
 const Login = () => {
   //to navigate to pages
@@ -85,7 +87,7 @@ const Login = () => {
                 <div className="text-red-600">{formik.errors.password}</div>
               </div>
               <Button gradientDuoTone="purpleToBlue" type="submit">
-                Login
+                Login <CgLogIn/>
               </Button>
             </form>
             <div className="flex   gap-2 textsm mt-6 justify-between">

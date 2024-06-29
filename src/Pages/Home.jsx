@@ -6,11 +6,15 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { mycontext } from "../App";
 import { Link } from "react-router-dom";
-import { GiGraduateCap } from "react-icons/gi";
-import { BiBuildings, BiMoney } from "react-icons/bi";
+import { GiGraduateCap} from "react-icons/gi";
+import { BiBuildings} from "react-icons/bi";
 import { BsPerson, BsPostcard } from "react-icons/bs";
-import { HiHome } from "react-icons/hi";
-import { GrUpdate } from "react-icons/gr";
+import { GrCertificate, GrUpdate } from "react-icons/gr";
+import { FaPercentage } from "react-icons/fa";
+import { IoHome } from "react-icons/io5";
+import { FaIndianRupeeSign, FaLocationDot, FaUserPen } from "react-icons/fa6";
+import { IoMdAdd } from "react-icons/io";
+import { LuPenLine } from "react-icons/lu";
 
 //home page
 const Home = () => {
@@ -99,7 +103,7 @@ const Home = () => {
               {/* if the user is admin will show option to post jobs instead of card which display user details */}
               {user.isAdmin ? (
                 <Button gradientDuoTone="purpleToBlue">
-                  <Link to="/post-jobs">Post New Jobs +</Link>
+                  <Link to="/post-jobs">Post New Jobs <IoMdAdd/></Link>
                 </Button>
               ) : (
                 <Card className="max-w-8xl mx-auto">
@@ -138,9 +142,9 @@ const Home = () => {
             <div className="border-b border-gray-900/10 pb-12">
               <div className="col-span-full">
                 <Label
-                  value="About"
+                  
                   className="form-label block text-sm font-medium leading-6 text-gray-900"
-                />
+                >About <FaUserPen/></Label>
                 <div className="mt-2">
                   <Textarea
                     id="about"
@@ -195,7 +199,7 @@ const Home = () => {
                     <TextInput
                       type="text"
                       name="ugcourse"
-                     
+                     icon={GrCertificate}
                       id="ugcourse"
                       defaultValue={user.ugcourse || ""}
                       onChange={formik.handleChange}
@@ -213,6 +217,7 @@ const Home = () => {
                     <TextInput
                       type="text"
                       name="ugpercentage"
+                      icon={FaPercentage}
                       id="ugpercentage"
                       defaultValue={user.ugpercentage || ""}
                       onChange={formik.handleChange}
@@ -249,6 +254,7 @@ const Home = () => {
                     <TextInput
                       type="text"
                       name="pgcourse"
+                      icon={GrCertificate}
                       id="pgcourse"
                       defaultValue={user.pgcourse || ""}
                       onChange={formik.handleChange}
@@ -265,6 +271,7 @@ const Home = () => {
                     <TextInput
                       type="text"
                       name="pgpercentage"
+                      icon={FaPercentage}
                       id="pgpercentage"
                       defaultValue={user.pgpercentage || ""}
                       onChange={formik.handleChange}
@@ -401,7 +408,7 @@ const Home = () => {
                   <div className="mt-2">
                     <TextInput
                       type="number"
-                      icon={BiMoney}
+                      icon={FaIndianRupeeSign}
                       name="expectingSalary"
                       id="expectingSalary"
                       defaultValue={user.expectingSalary || ""}
@@ -438,7 +445,7 @@ const Home = () => {
                     <TextInput
                       type="text"
                       name="firstname"
-                      icon={BsPerson}
+                     icon={BsPerson}
                       id="firstname"
                       defaultValue={user.firstname || ""}
                       onChange={formik.handleChange}
@@ -459,6 +466,7 @@ const Home = () => {
                     <TextInput
                       type="text"
                       name="lastname"
+                      icon={LuPenLine}
                       id="lastname"
                       defaultValue={user.lastname || ""}
                       onChange={formik.handleChange}
@@ -477,7 +485,7 @@ const Home = () => {
                     <TextInput
                       type="text"
                       name="streetaddress"
-                      icon={HiHome}
+                      icon={IoHome}
                       id="streetaddress"
                       defaultValue={user.streetaddress || ""}
                       onChange={formik.handleChange}
@@ -518,6 +526,7 @@ const Home = () => {
                       type="text"
                       name="region"
                       id="region"
+                      icon={FaLocationDot}
                       defaultValue={user.region || ""}
                       onChange={formik.handleChange}
                       className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -555,7 +564,7 @@ const Home = () => {
               gradientDuoTone="purpleToBlue"
               className="rounded-md px-3 py-2 text-sm font-semibold font-serif text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
             >
-              UPDATE<GrUpdate/>
+              UPDATE <GrUpdate/>
             </Button>
           </div>
         </form>

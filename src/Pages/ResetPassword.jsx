@@ -6,6 +6,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { MdOutlineLockReset } from "react-icons/md";
 
 //reset password page
 const ResetPassword = () => {
@@ -71,7 +72,7 @@ const ResetPassword = () => {
               </div>
 
               <Button gradientDuoTone="purpleToBlue" type="submit">
-                Reset Password
+                Reset Password <MdOutlineLockReset/>
               </Button>
             </form>
           </div>
