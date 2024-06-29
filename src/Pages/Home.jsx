@@ -6,6 +6,11 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { mycontext } from "../App";
 import { Link } from "react-router-dom";
+import { GiGraduateCap } from "react-icons/gi";
+import { BiBuildings, BiMoney } from "react-icons/bi";
+import { BsPerson, BsPostcard } from "react-icons/bs";
+import { HiHome } from "react-icons/hi";
+import { GrUpdate } from "react-icons/gr";
 
 //home page
 const Home = () => {
@@ -141,6 +146,7 @@ const Home = () => {
                     id="about"
                     name="about"
                     rows="3"
+                    
                     defaultValue={user.about || ""}
                     onChange={formik.handleChange}
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -171,6 +177,7 @@ const Home = () => {
                     <TextInput
                       type="text"
                       name="ugdegree"
+                      icon={GiGraduateCap}
                       id="ugdegree"
                       defaultValue={user.ugdegree || ""}
                       onChange={formik.handleChange}
@@ -188,6 +195,7 @@ const Home = () => {
                     <TextInput
                       type="text"
                       name="ugcourse"
+                     
                       id="ugcourse"
                       defaultValue={user.ugcourse || ""}
                       onChange={formik.handleChange}
@@ -225,6 +233,7 @@ const Home = () => {
                       type="text"
                       name="pgdegree"
                       id="pgdegree"
+                      icon={GiGraduateCap}
                       defaultValue={user.pgdegree || ""}
                       onChange={formik.handleChange}
                       className="form-control block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -392,6 +401,7 @@ const Home = () => {
                   <div className="mt-2">
                     <TextInput
                       type="number"
+                      icon={BiMoney}
                       name="expectingSalary"
                       id="expectingSalary"
                       defaultValue={user.expectingSalary || ""}
@@ -428,6 +438,7 @@ const Home = () => {
                     <TextInput
                       type="text"
                       name="firstname"
+                      icon={BsPerson}
                       id="firstname"
                       defaultValue={user.firstname || ""}
                       onChange={formik.handleChange}
@@ -466,6 +477,7 @@ const Home = () => {
                     <TextInput
                       type="text"
                       name="streetaddress"
+                      icon={HiHome}
                       id="streetaddress"
                       defaultValue={user.streetaddress || ""}
                       onChange={formik.handleChange}
@@ -487,6 +499,7 @@ const Home = () => {
                       type="text"
                       name="city"
                       id="city"
+                      icon={BiBuildings}
                       defaultValue={user.city || ""}
                       onChange={formik.handleChange}
                       className="form-control block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -522,6 +535,7 @@ const Home = () => {
                     <TextInput
                       type="text"
                       name="postalcode"
+                      icon={BsPostcard}
                       id="postalcode"
                       defaultValue={user.postalcode || ""}
                       onChange={formik.handleChange}
@@ -541,7 +555,7 @@ const Home = () => {
               gradientDuoTone="purpleToBlue"
               className="rounded-md px-3 py-2 text-sm font-semibold font-serif text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
             >
-              UPDATE
+              UPDATE<GrUpdate/>
             </Button>
           </div>
         </form>

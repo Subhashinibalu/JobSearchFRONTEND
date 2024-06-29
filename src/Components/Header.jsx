@@ -33,7 +33,7 @@ const Header = () => {
     setShowModal(false);
     try {
       const response = await axios.delete(
-        `http://localhost:5000/api/user/delete/${user._id}`
+        `https://jobssearchbackend.onrender.com/api/user/delete/${user._id}`
       ); //user id is send, so we can delete using id
 
       //on successful deletion of
