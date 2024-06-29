@@ -128,12 +128,12 @@ const Home = () => {
                     {" "}
                     <span className="font-semibold">{user.email}</span>
                   </p>
-                  <span className="text-sm text-gray-500 block text-center dark:text-gray-400">
+                  <span className="text-sm text-gray-500 block text-center ">
                     {user.about}
                   </span>
 
-                  <span className="text-sm text-gray-500 block text-center dark:text-gray-400">
-                    Hi {user.username}! you can update your profile details here
+                  <span className="text-sm text-green-500 font-semibold block text-center">
+                    Hi {user.username}! To get job recommendations ,kindly update your details here
                   </span>
                 </Card>
               )}
