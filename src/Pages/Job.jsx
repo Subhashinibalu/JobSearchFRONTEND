@@ -1,10 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { mycontext } from "../App";
-import { Banner, Button, Toast } from "flowbite-react";
-import { MdAnnouncement, MdLoop } from "react-icons/md";
-import { Link } from "react-router-dom";
-import { HiX } from "react-icons/hi";
+import {  Button} from "flowbite-react";
+
 
 // this page is for job recommendations based on users skills
 const Job = () => {
@@ -12,7 +10,7 @@ const Job = () => {
   const [user, setUser] = useContext(mycontext);
   const token = localStorage.getItem("Token");
   const [applied, setApplied] = useState([]);
-  const [recommend, setRecommend] = useState(false);
+  
   useEffect(() => {
     fetchData();
   }, []);
@@ -23,7 +21,7 @@ const Job = () => {
     );
     if (response.status == 200) {
       setJobs(response.data); 
-      setRecommend(true);//response is set to jobs
+      //response is set to jobs
     } else {
       console.log(response.data.message);
     }
@@ -51,7 +49,12 @@ const Job = () => {
   };
 
   return (
-    <>{ recommend ?  <div className=" p-10 max-h-screen overflow-auto ">
+    <> 
+    if(jobs.length == 0){
+      alert("To get job recommendations, kindly fill out the user details")
+    }
+    
+     <div className=" p-10 max-h-screen overflow-auto ">
       {jobs.map((ele, index) => {
         return (
           <div key={index}>
@@ -135,28 +138,7 @@ const Job = () => {
           </div>
         );
       })}
-    </div> :  <div className=" p-10 max-h-screen overflow-auto ">  <Banner>
-      <div className="flex w-full justify-between border-b border-gray-200 bg-gray-50 p-4 dark:border-gray-600 dark:bg-gray-700">
-        <div className="mx-auto flex items-center">
-          <p className="flex items-center text-sm font-normal text-gray-500 dark:text-gray-400">
-            <MdAnnouncement className="mr-4 h-4 w-4" />
-            <span className="[&_p]:inline">
-              New brand identity has been launched for the&nbsp;
-              <a
-                href="https://flowbite.com"
-                className="inline font-medium text-cyan-600 underline decoration-solid underline-offset-2 hover:no-underline dark:text-cyan-500"
-              >
-                Flowbite Library
-              </a>
-            </span>
-          </p>
-        </div>
-        <Banner.CollapseButton color="gray" className="border-0 bg-transparent text-gray-500 dark:text-gray-400">
-          <HiX className="h-4 w-4" />
-        </Banner.CollapseButton>
-      </div>
-    </Banner>
-    </div>}
+    </div> 
      
     </>
   );
