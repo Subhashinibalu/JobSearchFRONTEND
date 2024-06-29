@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { mycontext } from "../App";
 import {  Button} from "flowbite-react";
+import { useNavigate } from "react-router-dom";
 
 
 // this page is for job recommendations based on users skills
@@ -10,7 +11,7 @@ const Job = () => {
   const [user, setUser] = useContext(mycontext);
   const token = localStorage.getItem("Token");
   const [applied, setApplied] = useState([]);
-  
+  const navigate = useNavigate()
   useEffect(() => {
     fetchData();
   }, []);
@@ -47,12 +48,15 @@ const Job = () => {
   const handleUpdate = () => {
     setApplied([...applied, true]);
   };
+  if(jobs.length == 0){
+    alert("To get job recommendations, kindly fill out the user details")
+    navigate('/home')
+    
+  }
 
   return (
     <> 
-    if(jobs.length == 0){
-      alert("To get job recommendations, kindly fill out the user details")
-    }
+    
     
      <div className=" p-10 max-h-screen overflow-auto ">
       {jobs.map((ele, index) => {
