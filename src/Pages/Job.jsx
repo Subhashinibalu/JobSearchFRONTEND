@@ -11,7 +11,7 @@ const Job = () => {
   const [user, setUser] = useContext(mycontext);
   const token = localStorage.getItem("Token");
   const [applied, setApplied] = useState([]);
-  const navigate = useNavigate()
+  
   useEffect(() => {
     fetchData();
   }, []);
@@ -54,7 +54,7 @@ const Job = () => {
     
     
      <div className=" p-10 max-h-screen overflow-auto ">
-      {jobs.length>0 ? jobs.map((ele, index) => {
+      {jobs.map((ele, index) => {
         return (
           <div key={index}>
             <form onSubmit={handleSubmit}>
@@ -136,7 +136,7 @@ const Job = () => {
             </form>
           </div>
         );
-      }):alert("Kindly fill out the user details")}
+      })}
     </div> 
      
     </>
