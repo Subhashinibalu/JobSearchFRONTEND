@@ -52,7 +52,7 @@ const Search = () => {
 
   return (
     <>
-      <div className="m-2 p-8 max-h-screen  overflow-auto">
+      <div className="m-2 p-8 min-h-screen">
         {/* search bar */}
         <form>
           <TextInput

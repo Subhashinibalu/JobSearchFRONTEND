@@ -53,7 +53,7 @@ const Job = () => {
     <> 
     
     
-     <div className=" p-10 max-h-screen overflow-auto ">
+     <div className=" p-10 min-h-screen overflow-auto ">
       {jobs.map((ele, index) => {
         return (
           <div key={index}>
