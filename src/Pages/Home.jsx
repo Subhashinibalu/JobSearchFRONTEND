@@ -9,12 +9,12 @@ import { Link } from "react-router-dom";
 import { GiGraduateCap} from "react-icons/gi";
 import { BiBuildings} from "react-icons/bi";
 import { BsPerson, BsPostcard } from "react-icons/bs";
-import { GrCertificate, GrUpdate } from "react-icons/gr";
-import { FaPercentage } from "react-icons/fa";
+import {  GrUpdate } from "react-icons/gr";
 import { IoHome } from "react-icons/io5";
 import { FaIndianRupeeSign, FaLocationDot, FaUserPen } from "react-icons/fa6";
-import { IoMdAdd } from "react-icons/io";
 import { LuPenLine } from "react-icons/lu";
+import { PiCertificateLight } from "react-icons/pi";
+import { AiOutlinePercentage } from "react-icons/ai";
 
 //home page
 const Home = () => {
@@ -103,7 +103,7 @@ const Home = () => {
               {/* if the user is admin will show option to post jobs instead of card which display user details */}
               {user.isAdmin ? (
                 <Button gradientDuoTone="purpleToBlue">
-                  <Link to="/post-jobs">Post New Jobs <IoMdAdd/></Link>
+                  <Link to="/post-jobs">Post New Job +</Link>
                 </Button>
               ) : (
                 <Card className="max-w-8xl mx-auto">
@@ -142,9 +142,10 @@ const Home = () => {
             <div className="border-b border-gray-900/10 pb-12">
               <div className="col-span-full">
                 <Label
-                  
+                  value="About"
+                  icon={FaUserPen}
                   className="form-label block text-sm font-medium leading-6 text-gray-900"
-                >About <FaUserPen/></Label>
+                />
                 <div className="mt-2">
                   <Textarea
                     id="about"
@@ -199,7 +200,7 @@ const Home = () => {
                     <TextInput
                       type="text"
                       name="ugcourse"
-                     icon={GrCertificate}
+                     icon={PiCertificateLight}
                       id="ugcourse"
                       defaultValue={user.ugcourse || ""}
                       onChange={formik.handleChange}
@@ -217,7 +218,7 @@ const Home = () => {
                     <TextInput
                       type="text"
                       name="ugpercentage"
-                      icon={FaPercentage}
+                      icon={AiOutlinePercentage}
                       id="ugpercentage"
                       defaultValue={user.ugpercentage || ""}
                       onChange={formik.handleChange}
@@ -254,7 +255,7 @@ const Home = () => {
                     <TextInput
                       type="text"
                       name="pgcourse"
-                      icon={GrCertificate}
+                      icon={PiCertificateLight}
                       id="pgcourse"
                       defaultValue={user.pgcourse || ""}
                       onChange={formik.handleChange}
@@ -271,7 +272,7 @@ const Home = () => {
                     <TextInput
                       type="text"
                       name="pgpercentage"
-                      icon={FaPercentage}
+                      icon={AiOutlinePercentage}
                       id="pgpercentage"
                       defaultValue={user.pgpercentage || ""}
                       onChange={formik.handleChange}
@@ -564,7 +565,7 @@ const Home = () => {
               gradientDuoTone="purpleToBlue"
               className="rounded-md px-3 py-2 text-sm font-semibold font-serif text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
             >
-              UPDATE <GrUpdate/>
+              UPDATE &nbsp;<GrUpdate/>
             </Button>
           </div>
         </form>

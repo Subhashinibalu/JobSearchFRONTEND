@@ -72,7 +72,7 @@ const ResetPassword = () => {
               </div>
 
               <Button gradientDuoTone="purpleToBlue" type="submit">
-                Reset Password <MdOutlineLockReset/>
+                Reset Password &nbsp;<MdOutlineLockReset className="text-xl"/>
               </Button>
             </form>
           </div>

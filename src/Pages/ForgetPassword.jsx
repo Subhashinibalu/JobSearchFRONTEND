@@ -73,7 +73,7 @@ const ForgetPassword = () => {
               </div>
 
               <Button gradientDuoTone="purpleToBlue" type="submit">
-                Send Mail <SiMinutemailer/>
+                Send Mail&nbsp;<SiMinutemailer/>
               </Button>
             </form>
           </div>

@@ -1,7 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { mycontext } from "../App";
-import { Button } from "flowbite-react";
+import { Button, Toast } from "flowbite-react";
+
+import { MdLoop } from "react-icons/md";
+import { Link } from "react-router-dom";
 
 // this page is for job recommendations based on users skills
 const Job = () => {
@@ -48,7 +51,7 @@ const Job = () => {
   return (
     <>
       <div className=" p-10 min-h-screen overflow-auto ">
-        {jobs.map((ele, index) => {
+        {jobs?jobs.map((ele, index) => {
           return (
             <div key={index}>
               <form onSubmit={handleSubmit}>
@@ -130,7 +133,24 @@ const Job = () => {
               </form>
             </div>
           );
-        })}
+        }):       <Toast>
+        <div className="flex items-start">
+          <div className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-cyan-100 text-cyan-500 dark:bg-cyan-900 dark:text-cyan-300">
+            <MdLoop className="h-5 w-5" />
+          </div>
+          <div className="ml-3 text-sm font-normal">
+            <span className="mb-1 text-sm font-semibold text-gray-900 dark:text-white">Update Profile</span>
+            <div className="mb-2 text-sm font-normal">To get job recommendation need to update your details.</div>
+            <div className="flex gap-2">
+              <div className="w-auto">
+                <Button size="xs"><Link to='/home'>Update</Link></Button>
+              </div>
+              
+            </div>
+          </div>
+          <Toast.Toggle />
+        </div>
+      </Toast>}
       </div>
     </>
   );
