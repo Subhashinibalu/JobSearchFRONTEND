@@ -26,7 +26,7 @@ const Register = () => {
     onSubmit: async (values) => {
       try {
         const response = await axios.post(
-          `http://localhost:5000/api/auth/register`,
+          `https://jobssearchbackend.onrender.com/api/auth/register`,
           values
         );
         if (response.status == 200) {

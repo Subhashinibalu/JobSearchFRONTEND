@@ -14,7 +14,7 @@ const TrackApplication = () => {
 
   const fetchData = async () => {
     const response = await axios.get(
-      `http://localhost:5000/api/admin/getjobs/${user._id}`
+      `https://jobssearchbackend.onrender.com/api/admin/getjobs/${user._id}`
     );
     if (response.status == 200) {
       setJobs(response.data); //user value updated with applied job id

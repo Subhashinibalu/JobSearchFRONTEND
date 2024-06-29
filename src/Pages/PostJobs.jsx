@@ -33,7 +33,7 @@ const PostJobs = () => {
     onSubmit: async (values) => {
       try {
         const response = await axios.post(
-          `http://localhost:5000/api/admin/post-job`,
+          `https://jobssearchbackend.onrender.com/api/admin/post-job`,
           values
         );
         if (response.status == 200) {

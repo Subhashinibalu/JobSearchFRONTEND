@@ -56,7 +56,7 @@ const Home = () => {
       try {
         //update user profile
         const response = await axios.put(
-          `http://localhost:5000/api/user/update/${user._id}/${token}`,
+          `https://jobssearchbackend.onrender.com/api/user/update/${user._id}/${token}`,
           values
         );
 

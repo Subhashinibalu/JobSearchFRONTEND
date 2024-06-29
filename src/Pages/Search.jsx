@@ -20,7 +20,7 @@ const Search = () => {
   const fetchData = async () => {
     //sending the search value to backend simultaneously when search input is given
     const response = await axios.get(
-      `http://localhost:5000/api/admin/getsearch?query=${query}`
+      `https://jobssearchbackend.onrender.com/api/admin/getsearch?query=${query}`
     );
     if (response.status == 200) {
       setJobs(response.data); //on successful fetch response is set to jobs
@@ -36,7 +36,7 @@ const Search = () => {
 
     try {
       const response = await axios.put(
-        `http://localhost:5000/api/user/application/${jobId}/${token}`
+        `https://jobssearchbackend.onrender.com/api/user/application/${jobId}/${token}`
       );
       if (response.status == 200) {
         setUser(response.data.rest);

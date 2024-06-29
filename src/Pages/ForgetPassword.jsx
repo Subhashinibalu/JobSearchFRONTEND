@@ -24,7 +24,7 @@ const ForgetPassword = () => {
 
         //will post the user mail to backend to perform required action
         const response = await axios.post(
-          "http://localhost:5000/api/auth/forgot-password",
+          "https://jobssearchbackend.onrender.com/api/auth/forgot-password",
           values
         );
         if (response.status == 200) {
