@@ -5,6 +5,19 @@
  The **JOBSEARCH** application is a *Job board platform* (candidates portal), where the user can have access to create an user profile, search,apply and track jobs, only after having an user account in this app by registering . The dynamic and interactive UI is build using *React*, *Tailwind CSS* is used to achieve responsiveness, Global state management is achieved using the *Context API*, react state and *Formik* is used to manage form inputs and validation messages and *react router* is used to handle client side routing.
 
 ***
+#### ADMIN LOGIN
+ Mail id - subhashiniulk@gmail.com
+
+ password - 1234
+
+ ***
+ #### SAMPLE USER LOGIN
+ Mail id - subhanilaulk@gmail.com
+
+ Password - 4321
+
+ ***
+ 
 
 ### REGISTRATION PAGE
 
